@@ -1,18 +1,41 @@
-#include "shell_sort2.hpp"
+#include "shell_sort3.hpp"
 
-void ShellSort2::shell_sort2(std::vector<int>& nums) noexcept
+void ShellSort3::shell_sort3(std::vector<int>& nums) noexcept
 {
 	std::vector<double> gaps;
-	for (int i = log2(nums.size()); i > 0; --i)
+	unsigned int p = 0;
+	unsigned int q = 0;
+	unsigned int in = 1;
+	while (in)
 	{
-		gaps.push_back(pow(2, i) + 1);
+		int counter = 0;
+		while (pow(2, p) * pow(3, q) < nums.size())
+		{
+			int temp = pow(2,p) * pow(3,q);
+			//std::cout << "temp: " << temp << std::endl;
+			if (std::count(nums.begin(), nums.end(),temp))
+			{
+				gaps.push_back(temp);
+			}	
+			p++;
+			counter++;
+		}
+		if (counter == 0)
+		{
+			in = 0;
+		}
+		p = 0;
+		q++;
 	}
-	gaps.push_back(1);
+	
+	std::sort(gaps.begin(), gaps.end(), std::greater<int>());
+	
 	//for (auto gap : gaps)
 	//{
 	//	std::cout << gap << " ";
 	//}
 	//std::cout << std::endl;
+
 	for (auto gap : gaps)
 	{
 		//std::cout << "GAP: " << gap << std::endl;

@@ -1,13 +1,30 @@
-#include "shell_sort2.hpp"
+#include "shell_sort4.hpp"
 
-void ShellSort2::shell_sort2(std::vector<int>& nums) noexcept
+void ShellSort4::shell_sort4(std::vector<int>& nums) noexcept
 {
 	std::vector<double> gaps;
-	for (int i = log2(nums.size()); i > 0; --i)
+	unsigned int counter = 0;
+	while (true)
 	{
-		gaps.push_back(pow(2, i) + 1);
+		unsigned int temp = 0;
+		if (counter % 2 == 0)
+		{
+			temp = 9 * (pow(2,counter) - pow(2,counter/2)) + 1;
+		}
+		else
+		{
+			temp = (8 * pow(2,counter)) - (6 * pow(2,(counter+1)/2)) + 1;
+		}
+		if (temp < nums.size())
+		{
+			gaps.insert(gaps.begin(), temp);
+			counter++;
+		}
+		else
+		{
+			break;
+		}
 	}
-	gaps.push_back(1);
 	//for (auto gap : gaps)
 	//{
 	//	std::cout << gap << " ";
