@@ -6,7 +6,7 @@
 
 int main(int argc, char** argv)
 {
-	std::vector<int> nums = {6, 4, 8, 1, 2, 9, 3, 5, 7, 13, 14, 10, 11, 17, 16, 12, 15, 20, 19, 18};
+	std::vector<int> nums = {15, 1, 6, 12, 10, 4, 8, 14, 9, 11, 2, 5, 7, 13, 3};
 	std::cout << "Before:" << std::endl;
 	for (auto item : nums)
 	{

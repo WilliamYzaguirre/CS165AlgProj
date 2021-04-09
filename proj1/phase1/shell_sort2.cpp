@@ -1,6 +1,6 @@
-#include "shell_sort1.hpp"
+#include "shell_sort2.hpp"
 
-void ShellSort1::shell_sort1(std::vector<int>& nums) noexcept
+void ShellSort2::shell_sort2(std::vector<int>& nums) noexcept
 {
 	std::vector<double> gaps;
 	for (double i = 1; i < log2(nums.size()); ++i)
