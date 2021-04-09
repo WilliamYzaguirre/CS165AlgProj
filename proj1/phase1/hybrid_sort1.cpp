@@ -1,13 +1,20 @@
-#include "hybrid_sort1.hpp"
+#include "project1.h"
+#include <iostream>
+#include <math.h>
 
-void HybridSort1::hybrid_sort1(std::vector<int>& nums) noexcept
+void merge1(std::vector<int>& nums, int left, int middle, int right);
+void insertion_sort1(std::vector<int>& nums, int left, int right); 
+void recur1(std::vector<int>& nums, int left, int right, int H); 
+
+
+void hybrid_sort1(std::vector<int>& nums)
 {
 	int H = pow(nums.size(), 1.0/2.0);
 	std::cout << "H: " << H << std::endl;
-	recur(nums, 0, nums.size() - 1, H);
+	recur1(nums, 0, nums.size() - 1, H);
 }
 
-void HybridSort1::recur(std::vector<int>& nums, int left, int right, int H) noexcept
+void recur1(std::vector<int>& nums, int left, int right, int H) 
 {
 	std::cout << "recur left: " << left << " right: " << right << std::endl;
 	if (right - left > H)
@@ -16,18 +23,18 @@ void HybridSort1::recur(std::vector<int>& nums, int left, int right, int H) noex
 		{
 			int middle = left + (right - left) / 2;
 			std::cout << "recur mid: " << middle << std::endl;
-			recur(nums, left, middle, H);
-			recur(nums, middle + 1, right, H);
-			merge(nums, left, middle, right);
+			recur1(nums, left, middle, H);
+			recur1(nums, middle + 1, right, H);
+			merge1(nums, left, middle, right);
 		}
 	}
 	else
 	{
-		insertion_sort(nums, left, right);
+		insertion_sort1(nums, left, right);
 	}
 }
 
-void HybridSort1::merge(std::vector<int>& nums, int left, int middle, int right) noexcept
+void merge1(std::vector<int>& nums, int left, int middle, int right) 
 {
 	std::cout << "left: " << left << " middle: " << middle << " right: " << right << std::endl;
 	int cur_left = left;
@@ -85,7 +92,7 @@ void HybridSort1::merge(std::vector<int>& nums, int left, int middle, int right)
 }
 
 
-void HybridSort1::insertion_sort(std::vector<int>& nums, int left, int right) noexcept
+void insertion_sort1(std::vector<int>& nums, int left, int right) 
 {
 	std::cout << "LEFT: " << left << " RIGHT: " << right << std::endl;
 	std::cout << "Sorting: ";

@@ -1,6 +1,8 @@
-#include "shell_sort4.hpp"
+#include "project1.h"
+#include <iostream>
+#include <math.h>
 
-void ShellSort4::shell_sort4(std::vector<int>& nums) noexcept
+void shell_sort4(std::vector<int>& nums) 
 {
 	std::vector<double> gaps;
 	unsigned int counter = 0;

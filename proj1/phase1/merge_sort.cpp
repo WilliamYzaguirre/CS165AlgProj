@@ -1,11 +1,17 @@
-#include "merge_sort.hpp"
+#include "project1.h"
+#include <iostream>
+#include <math.h>
 
-void MergeSort::merge_sort(std::vector<int>& nums) noexcept
+void recur(std::vector<int>& nums, unsigned int left, unsigned int right); 
+void merge(std::vector<int>& nums, unsigned int left, unsigned int middle, unsigned int right);
+
+
+void merge_sort(std::vector<int>& nums)
 {
 	recur(nums, 0, nums.size() - 1);
 }
 
-void MergeSort::recur(std::vector<int>& nums, unsigned int left, unsigned int right) noexcept
+void recur(std::vector<int>& nums, unsigned int left, unsigned int right) 
 {
 	if (left < right)
 	{
@@ -17,7 +23,7 @@ void MergeSort::recur(std::vector<int>& nums, unsigned int left, unsigned int ri
 	}
 }
 
-void MergeSort::merge(std::vector<int>& nums, unsigned int left, unsigned int middle, unsigned int right) noexcept
+void merge(std::vector<int>& nums, unsigned int left, unsigned int middle, unsigned int right) 
 {
 	std::cout << "left: " << left << " middle: " << middle << " right: " << right << std::endl;
 	unsigned int cur_left = left;

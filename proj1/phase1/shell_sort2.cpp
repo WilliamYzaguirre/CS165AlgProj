@@ -1,6 +1,8 @@
-#include "shell_sort2.hpp"
+#include "project1.h"
+#include <iostream>
+#include <math.h>
 
-void ShellSort2::shell_sort2(std::vector<int>& nums) noexcept
+void shell_sort2(std::vector<int>& nums) 
 {
 	std::vector<double> gaps;
 	for (int i = log2(nums.size()); i > 0; --i)

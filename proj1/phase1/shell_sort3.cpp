@@ -1,6 +1,9 @@
-#include "shell_sort3.hpp"
+#include "project1.h"
+#include <iostream>
+#include <math.h>
+#include <algorithm>
 
-void ShellSort3::shell_sort3(std::vector<int>& nums) noexcept
+void shell_sort3(std::vector<int>& nums) 
 {
 	std::vector<double> gaps;
 	unsigned int p = 0;
@@ -13,10 +16,10 @@ void ShellSort3::shell_sort3(std::vector<int>& nums) noexcept
 		{
 			int temp = pow(2,p) * pow(3,q);
 			//std::cout << "temp: " << temp << std::endl;
-			if (std::count(nums.begin(), nums.end(),temp))
-			{
-				gaps.push_back(temp);
-			}	
+			//if (!std::count(gaps.begin(), gaps.end(),temp))
+			//{
+			gaps.push_back(temp);
+			//}	
 			p++;
 			counter++;
 		}
@@ -30,15 +33,15 @@ void ShellSort3::shell_sort3(std::vector<int>& nums) noexcept
 	
 	std::sort(gaps.begin(), gaps.end(), std::greater<int>());
 	
-	//for (auto gap : gaps)
-	//{
-	//	std::cout << gap << " ";
-	//}
-	//std::cout << std::endl;
+	for (auto gap : gaps)
+	{
+		std::cout << gap << " ";
+	}
+	std::cout << std::endl;
 
 	for (auto gap : gaps)
 	{
-		//std::cout << "GAP: " << gap << std::endl;
+		std::cout << "GAP: " << gap << std::endl;
 		for (int i = 0; i < gap; ++i)
 		{
 			int count = ceil( (nums.size() - i + 0.0) / (gap * 1.0));

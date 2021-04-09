@@ -1,6 +1,7 @@
-#include "insertion_sort.hpp"
+#include "project1.h"
+#include <iostream>
 
-void InsertionSort::insertion_sort(std::vector<int>& nums) noexcept
+void insertion_sort(std::vector<int>& nums) 
 {
 	for(int i = 1; i < nums.size(); ++i)
 	{
