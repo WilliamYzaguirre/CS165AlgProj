@@ -16,7 +16,6 @@ void recur(std::vector<int>& nums, unsigned int left, unsigned int right)
 	if (left < right)
 	{
 		unsigned int middle = left + (right - left) / 2;
-		std::cout << "recur mid: " << middle << std::endl;
 		recur(nums, left, middle);
 		recur(nums, middle + 1, right);
 		merge(nums, left, middle, right);
@@ -25,7 +24,6 @@ void recur(std::vector<int>& nums, unsigned int left, unsigned int right)
 
 void merge(std::vector<int>& nums, unsigned int left, unsigned int middle, unsigned int right) 
 {
-	std::cout << "left: " << left << " middle: " << middle << " right: " << right << std::endl;
 	unsigned int cur_left = left;
 	unsigned int cur_right = middle + 1;
 	
@@ -55,20 +53,11 @@ void merge(std::vector<int>& nums, unsigned int left, unsigned int middle, unsig
 		temp.push_back(nums[i]);
 	}
 
-	std::cout << "temp: ";
 
-	for (int i = 0; i < temp.size(); ++i)
-	{
-		std::cout << temp[i] << ", ";
-	}
-
-	std::cout << std::endl;
 
 	for (unsigned int i = left; i < right + 1; ++i)
 	{
-		std::cout << "move: " << temp[i - left] << ", ";
 		nums[i] = temp[i - left];
 	}
 
-	std::cout << std::endl;
 }

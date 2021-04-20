@@ -33,15 +33,10 @@ void shell_sort3(std::vector<int>& nums)
 	
 	std::sort(gaps.begin(), gaps.end(), std::greater<int>());
 	
-	for (auto gap : gaps)
-	{
-		std::cout << gap << " ";
-	}
-	std::cout << std::endl;
 
 	for (auto gap : gaps)
 	{
-		std::cout << "GAP: " << gap << std::endl;
+		//std::cout << "GAP: " << gap << std::endl;
 		for (int i = 0; i < gap; ++i)
 		{
 			int count = ceil( (nums.size() - i + 0.0) / (gap * 1.0));
@@ -52,12 +47,18 @@ void shell_sort3(std::vector<int>& nums)
 				{
 					int k = j - gap;
 					int temp = nums[j];
-					while(temp < nums[k] && k > -1)
+					while(k > -1)
 					{
-						nums.at(k + gap) = nums.at(k);
-						nums.at(k) = temp;
-						k -= gap;
-
+						if (temp < nums[k])
+						{
+							nums.at(k + gap) = nums.at(k);
+							nums.at(k) = temp;
+							k -= gap;
+						}
+						else
+						{
+							break; //spagettiiiiii
+						}
 					}
 				}
 			}

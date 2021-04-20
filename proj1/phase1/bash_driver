@@ -1,0 +1,11 @@
+#!/bin/bash
+sort_type=("insertion" "merge" "shell1" "shell2" "shell3" "shell4" "hybrid1" "hybrid2" "hybrid3")
+sort_files=("isr.csv" "msr.csv" "s1r.csv" "s2r.csv" "s3r.csv" "s4r.csv" "h1r.csv" "h2r.csv" "h3r.csv")
+
+for ((y = 0; y < 9; y++)); do
+	for ((i = 10; i <= 17; i++)); do
+		for ((j = 0; j < 5; j++)); do
+			/usr/bin/time --format "$((2**i)), %U" ./output ${sort_type[y]} $((2**i)) &>> data/${sort_files[y]}
+		done
+	done
+done

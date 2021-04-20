@@ -45,12 +45,18 @@ void shell_sort4(std::vector<int>& nums)
 				{
 					int k = j - gap;
 					int temp = nums[j];
-					while(temp < nums[k] && k > -1)
+					while(k > -1)
 					{
-						nums.at(k + gap) = nums.at(k);
-						nums.at(k) = temp;
-						k -= gap;
-
+						if (temp < nums[k])
+						{
+							nums.at(k + gap) = nums.at(k);
+							nums.at(k) = temp;
+							k -= gap;
+						}
+						else
+						{
+							break;
+						}
 					}
 				}
 			}
